@@ -1,0 +1,39 @@
+{
+  "name": "yii2-filemanager",
+  "version": "0.0.1",
+  "description": "manage your files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:DrMabuse23/yii2-filemanager.git"
+  },
+  "keywords": [
+    "manage",
+    "files",
+    "on"
+  ],
+  "author": "Pascal Brewing",
+  "license": "BSD-3",
+  "bugs": {
+    "url": "https://github.com/DrMabuse23/yii2-filemanager/issues"
+  },
+  "homepage": "https://github.com/DrMabuse23/yii2-filemanager",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-bumpup": "~0.4.1",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-sass": "~0.5.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-recess": "~0.3.3",
+    "grunt-release": "~0.5.1",
+    "grunt-remove-logging": "^0.2.0",
+    "grunt-text-replace": "~0.3.6",
+    "grunt-spritesmith": "^1.26.0"
+  }
+}

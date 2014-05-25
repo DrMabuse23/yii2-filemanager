@@ -1,0 +1,19 @@
+{
+  "name": "yii2-filemanager",
+  "version": "0.0.1",
+  "authors": [
+    "Pascal Brewing <p.brewing@herzogkommunikation.de>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/DrMabuse23/yii2-filemanager",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "dropzone": "~3.10.1"
+  }
+}
