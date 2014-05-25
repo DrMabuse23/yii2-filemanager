@@ -10,7 +10,12 @@ class FileManagerModule extends \yii\base\Module {
 
     public $version = '0.0.1';
 
-    public function beforeAction($action){
+    public $controllerNamespace = 'common\modules\fileManager\controllers';
 
+    public function init()
+    {
+        parent::init();
+
+        // custom initialization code goes here
     }
 }

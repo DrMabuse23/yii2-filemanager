@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                     }
                 ]
             },
-            home_php: {
+            module: {
                 src: ['FileManagerModule.php'],
                 overwrite: true,
                 replacements: [
@@ -56,6 +56,30 @@ module.exports = function (grunt) {
                 }
             }
         },
+
+        copy:{
+            main: {
+                files: [
+                    // includes files within path
+                    {expand: true,cwd:'<%= bower %>dropzone/downloads/', src: ['**'], dest: '<%= bundle %>/dropzone', filter: 'isFile'},
+                    {expand: true,cwd:'<%= bundle %>/dropzone/images/', src: ['**'], dest: '<%= dist %>/images', filter: 'isFile'}
+                ]
+            }
+        },
+        cssmin: {
+            combine: {
+                options: {
+                    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= pkg.author %> - ' +
+                    '<%= grunt.template.today("yyyy-mm-dd") %> */'
+                },
+                files: {
+                    '<%= dist %>css/application-<%=pkg.version %>.css': [
+                        '<%= bundle %>dropzone/css/basic.css',
+                        '<%= bundle %>dropzone/css/dropzone.css'
+                    ]
+                }
+            }
+        },
         concat: {
             options: {
                 stripBanners: true,
@@ -63,7 +87,8 @@ module.exports = function (grunt) {
                 '<%= grunt.template.today("yyyy-mm-dd") %> */'
             },
             vendor: {
-
+                src: ['<%= bundle %>/dropzone/dropzone.js'],
+                dest: '<%= dist %>/scripts/vendor-<%= pkg.version %>.js'
             },
             app: {
 
@@ -117,7 +142,7 @@ module.exports = function (grunt) {
                     }
                 },
                 files: {
-                    '<%= dist %>js/app.<%= pkg.version %>.min.js': ['<%= dist %>js/application.js']
+                    '<%= dist %>/scripts/vendor-<%= pkg.version %>.min.js': ['<%= dist %>/scripts/vendor-<%= pkg.version %>.js']
                 }
             }
         },
@@ -138,9 +163,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks("grunt-remove-logging");
     grunt.loadNpmTasks('grunt-spritesmith');
-// Default task(s).
-    grunt.registerTask('default', ['watch','sass']);
-    grunt.registerTask('newVersion',['clean','bumpup','replace','sass','concat','uglify','release']);
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
+// Default task(s).
+    grunt.registerTask('default', ['clean','copy','cssmin','concat','uglify']);
 }
 ;
