@@ -3,7 +3,6 @@ bower_components/
 *.log
 
 build/
-dist/
 
 .idea
 .DS_STORE
